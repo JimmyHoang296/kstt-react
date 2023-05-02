@@ -6,7 +6,7 @@ import Home from "./component/home/Home";
 import Job from "./component/job/Job";
 export default function App() {
   const [login, setLogin] = useState(false);
-  const user = JSON.parse(localStorage.getItem('data')).user.name||'Tên tài khoản'
+  const user = JSON.parse(localStorage.getItem('data'))?.user.name||'Tên tài khoản'
   return (
     <>
       {!login&&<LoginForm setLogin={setLogin}/>}
