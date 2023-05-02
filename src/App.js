@@ -1,27 +1,31 @@
 import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {  Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import LoginForm from "./component/login/LoginForm";
 import InputTable from "./component/inputTable/InputTable";
 import Layout from "./component/layout/Layout";
-
-
+import Home from "./component/home/Home";
+import Job from "./component/job/Job";
 export default function App() {
   const [login, setLogin] = useState(false);
-
+  const user = JSON.parse(localStorage.getItem('data')).user.name||'Tên tài khoản'
   return (
-    <BrowserRouter >
+    <>
+      {!login&&<LoginForm setLogin={setLogin}/>}
+      {login && <nav className="max-w-5xl w-screen p-1 mb-2 flex justify-around" >
+        <ul className="flex gap-8 text-lg">
+        <li ><Link className="hover: transform scale-150" to="/">Lịch làm việc</Link></li>
+        <li><Link to="/job">Sự vụ</Link></li>
+        </ul>
+         <h2>{user}</h2>
+        </nav>}
+    
+      {login &&
       <Routes>
-        <Route
-          path="/"
-          element={!login ? <LoginForm setLogin={setLogin} /> : <Layout />}
-        >
-          <Route index element={<InputTable />} />
-          {/* <Route path="searchLe" element={<SearchLe />} />
-          <Route path="create" element={<Create />} />
-          <Route path="customer" element={<Customer />} /> */}
-        </Route>
-      </Routes>
-    </BrowserRouter>
+        <Route path = "/" element={<Home/>}/>
+        <Route path = "/job" element={<Job/>}/>
+        
+      </Routes>}
+    </>
   );
 }

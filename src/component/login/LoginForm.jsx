@@ -15,7 +15,7 @@ export default function LoginForm({ setLogin }) {
     const res = await login({ id, password })
 
     if (res.status === "ok") {
-      localStorage.setItem('user', JSON.stringify({ id, name: res.name }))
+      localStorage.setItem('data', JSON.stringify(res.data))
       setLogin(true)
 
     } else {
