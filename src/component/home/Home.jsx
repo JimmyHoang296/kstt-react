@@ -43,7 +43,7 @@ export default function Home() {
 
   const btnStyle = 'px-2 py-1 h-10 text-base'
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e) => { 
     const name = e.target.name
     const id = e.target.id
     const oldVal = works.find(work => work.id === id)
