@@ -1,4 +1,3 @@
-import { json } from "react-router-dom";
 import { URL } from "./prop";
 
 export default async function submitWork(props) {

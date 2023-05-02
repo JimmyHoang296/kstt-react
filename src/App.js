@@ -2,8 +2,6 @@ import { useState } from "react";
 import {  Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import LoginForm from "./component/login/LoginForm";
-import InputTable from "./component/inputTable/InputTable";
-import Layout from "./component/layout/Layout";
 import Home from "./component/home/Home";
 import Job from "./component/job/Job";
 export default function App() {
