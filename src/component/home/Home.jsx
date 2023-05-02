@@ -25,7 +25,6 @@ function startWorks(week) {
 export default function Home() {
   const [week, setWeek] = useState(getCurrentWeek())
   const [works, setWorks] = useState(startWorks(week))
-  const [isMod, setIsMod] = useState(false)
   const [showModal, setShowModal] = useState(false)
 
   async function submitChange (){
@@ -33,20 +32,18 @@ export default function Home() {
     setShowModal(true)
     const res = await submitWork(works)
     localStorage.setItem('data', JSON.stringify(res.data))
-     
+    
     setShowModal(false)
 
   }
 
   useEffect(() => {
     setWorks(startWorks(week))
-    setIsMod(false)
   }, [week])
 
   const btnStyle = 'px-2 py-1 h-10 text-base'
 
   const handleInputChange = (e) => {
-    setIsMod(true)
     const name = e.target.name
     const id = e.target.id
     const oldVal = works.find(work => work.id === id)
